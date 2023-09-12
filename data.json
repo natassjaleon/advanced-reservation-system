@@ -1,21 +1,21 @@
 [
-  {
-    "client_name":"Ana Ojeda",
-    "reservation_date": "2023/09/01 10:00:00",
-    "check_in": "2023/09/",
-    "check_out": "2023/09/15 11:30:00",
-    "length_of_stay": 5,
-    "number_of_guests": 2,
-    "room_number": 11,
-    "room_type": "Doble Standard",
-    "diet": "Intolerante a la lactosa",
-    "email": "ana_ojeda18@hotmail.com",
-    "phone": "+584126543210",
-    "total_price": 800,
-    "payment_method": "Efectivo",
-    "notes": "Solicita check-in anticipado.",
-    "reservation_status": "Confirmado"
-  },
+    {
+      "client_name":"Ana Ojeda",
+      "reservation_date": "2023/09/01 10:00:00",
+      "check_in": "2023/09/10 14:00:00",
+      "check_out": "2023/09/15 11:30:00",
+      "length_of_stay": 5,
+      "number_of_guests": 2,
+      "room_number": 11,
+      "room_type": "Doble Standard",
+      "diet": "Intolerante a la lactosa",
+      "email": "ana_ojeda18@hotmail.com",
+      "phone": "+584126543210",
+      "total_price": 800,
+      "payment_method": "Efectivo",
+      "notes": "Solicita check-in anticipado.",
+      "reservation_status": "Confirmado"
+    },
     {
       "client_name":"Ana Ojeda",
       "reservation_date": "2023/09/01 10:00:00",
