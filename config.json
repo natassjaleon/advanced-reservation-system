@@ -1,0 +1,6 @@
+{
+	"hotel_name": "Natassja's Hotel",
+	"default_sort": "check_in",
+	"default_order": 0,
+ 	"file_route_name": "./data.json"
+}
