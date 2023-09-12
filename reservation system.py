@@ -252,29 +252,33 @@ def quickSort(array, low, high, criteria, order):
 # la primera sublista es arr[l..m]
 # la segunda sublista es arr[m+1..r]
 def merge(arr, l, m, r, order):
-   n1 = m - l + 1
-   n2 = r - m
-   # crea listas temporales
+   # calcula los tamaños de las dos sublistas
+   n1 = m - l + 1 # tamaño de la sublista izquierda
+   n2 = r - m # tamaño de la sublista derecha
+   # crea listas temporales para guardar las sublistas derecha e izquierda
    L = [0] * (n1)
    R = [0] * (n2)
-   # copia la data a las listas temporales L[] y R[]
+   # copia la data de la lista a ordenar a las listas temporales L[] y R[]
    for i in range(0, n1):
       L[i] = arr[l + i]
    for j in range(0, n2):
       R[j] = arr[m + 1 + j]
-   # fusiona las listas temporales de vuelta a arr[l..r]
+   # inicializa los punteros para atravesar las sublistas izquierda y derecha
    i = 0	 # índice inicial de la primera sublista
    j = 0	 # índice inicial de la segunda sublista
    k = l	 # #índice inicial de la sublista fusionada
+   
+   # compara y fusiona elementos de la listas temporales
+   # de vuelta a arr[l..r] basado en el orden (asc o desc)
    while i < n1 and j < n2:
-      if order==0:
+      if order==0: # orden ascendente
          if getattr(L[i],'total_price') <= getattr(R[j],'total_price'):
             arr[k] = L[i]
             i += 1
          else:
             arr[k] = R[j]
             j += 1
-      else:
+      else: # orden descendente
          if getattr(L[i],'total_price') >= getattr(R[j],'total_price'):
             arr[k] = L[i]
             i += 1
@@ -296,42 +300,60 @@ def merge(arr, l, m, r, order):
 def mergeSort(arr, l, r, order):
    if l < r:
       # igual que (l+r)//2, pero evita desbordamiento
-      # para valores grandes de l y h
+      # para valores grandes de l y r
+      # calcula el índice del medio de la sublista actual
       m = l+(r-l)//2
-      # ordena la primera y la segunda mitad
+      # ordena recursivamente la primera y la segunda mitad de la sublista
       mergeSort(arr, l, m, order)
       mergeSort(arr, m+1, r, order)
+      # fusiona las mitades derecha e izquierda ordenadas de vuelta en la lista original
       merge(arr, l, m, r, order)
 
 
 # Shellsort
-# Esta implementación realiza una clasificación de inserción con espacios para el tamaño
-# de la brecha de la lista gap=(n//2).
+# Esta implementación realiza un ordenamiento de inserción con espacios para un
+# tamaño de gap del tamaño original de la lista a ordenar.
 # Los primeros elementos de la lista a[0..gap-1] ya están en la lista, luego se sigue
 # añadiendo elementos hasta completar la lista ya ordenada
 def shellSort(arr, order):
-   # comienza con una brecha grande, luego se va reduciendo
+   # calcula el tamaño de la lista a ordenar para luego determinar el tamaño del gap
+   # y para iterar a través de la lista
    n = len(arr)
+   # inicializa el tamaño del gap con la mitad del tamaño de la lista
+   # el tamaño del gap determina cuántos elementos serán comparados e intercambiados
+   # durante cada pasada.
    gap = n//2
-
+   # inicia el bucle principal para el algoritmo shellsort
+   # el bucle continúa hasta que el tamaño del gap se hace 0,
+   # lo que indica la completación del proceso de ordenamiento.
    while gap > 0:
+      # itera a través de la lista empezando por el valor del gap actual.
       for i in range(gap, n):
+      # guarda el valor del elemento actual en una variable temporal
+      
       # agrega a[i] a los elementos que han sido ordenados por espacios
       # guarda a[i] en temp y hace un agujero en la posición i
          temp = arr[i]
-	# desplaza elementos anteriores ordenados por espacios hasta que
-	# la ubicación correcta para a[i] es encontrada
+         # inicializa el puntero j con el índice actual i
          j = i
+         # revisa si el orden es ascendente (order == 0).
          if order==0:
+            # mientras el puntero j sea más grande o igual que el tamaño del gap
+            # y el elemento en j-gap sea más grande que el valor de temp (asc),
+            # se mueve el elemento en j-gap a la derecha.
             while j>=gap and getattr(arr[j-gap],'number_of_reservations')>getattr(temp,'number_of_reservations'):
                arr[j] = arr[j-gap]
                j -= gap
-         else:
+         else: # si el orden es descendente (order==1)
+            # mientras el puntero j sea más grande o igual que el tamaño del gap
+            # y el elemento en j-gap sea más pequeño que el valor de temp (desc),
+            # se mueve el elemento en j-gap a la derecha.
             while j>=gap and getattr(arr[j-gap],'number_of_reservations')<getattr(temp,'number_of_reservations'):
                arr[j] = arr[j-gap]
                j -= gap
             # pone temp (el original a[i]) en su ubicación correcta
          arr[j] = temp
+      # reduce el tamaño del gap a la mitad, y continúa con la siguiente iteración.
       gap //= 2
 
 # Heapsort
