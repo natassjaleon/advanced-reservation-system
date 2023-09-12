@@ -28,7 +28,7 @@ Este repositorio de GitHub alberga un sistema avanzado de gestión de reservas d
  3. Personaliza el archivo config.json para configurar el sistema según tus preferencias.
  4. Ejecuta el programa:
 
-    python main.py
+    python reservation_system.py
 
 
 ## Uso
